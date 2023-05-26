@@ -11,24 +11,22 @@ class Jalan {
   String tingkat_kerusakan;
 
   Jalan(
-      {
-      required this.createAt,
+      {required this.createAt,
       required this.id,
       required this.img,
       required this.latitude,
       required this.longitude,
-      required this.tingkat_kerusakan
-      });
+      required this.tingkat_kerusakan});
 
   factory Jalan.fromMap(Map<String, dynamic> json) {
     return Jalan(
-        createAt: json["create_at"],
-        id: json["id"],
-        img: json["img"],
-        latitude: json["latitude"],
-        longitude: json["longitude"],
-        tingkat_kerusakan: json["tingkat_kerusakan"],
-        );
+      createAt: json["create_at"],
+      id: json["id"],
+      img: json["img"],
+      latitude: json["latitude"],
+      longitude: json["longitude"],
+      tingkat_kerusakan: json["tingkat_kerusakan"],
+    );
   }
 }
 

@@ -10,7 +10,8 @@ import 'auth/signin/signin_response.dart';
 import 'auth/signup/signup_request.dart';
 import 'auth/signup/signup_response.dart';
 
-final baseUrl = "https://web-service-production-0f42.up.railway.app/";
+// final baseUrl = "https://web-service-production-0f42.up.railway.app/";
+const baseUrl = "https://web-service-production-498a.up.railway.app/";
 
 class authService {
   static Future<SignUpResponse> doRegister(SignUpRequest signupRequest) async {

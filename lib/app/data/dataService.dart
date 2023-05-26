@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'package:bismillahcapston/app/data/dataResponse.dart';
 import 'package:http/http.dart' as http;
 
-final baseUrl = "https://web-service-production-0f42.up.railway.app";
+// final baseUrl = "https://web-service-production-0f42.up.railway.app";
+
+const baseUrl = "https://web-service-production-498a.up.railway.app";
 
 class DataService {
   Future<JalanResponse> getAllJalan() async {

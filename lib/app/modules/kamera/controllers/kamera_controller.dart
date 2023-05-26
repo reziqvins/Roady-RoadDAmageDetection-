@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class KameraController extends GetxController {
-  var location = 'Null, Press Button'.obs;
+  var location = 'sedang mendapatkan Lokasi ...'.obs;
   var address = 'search'.obs;
 
   @override
@@ -69,7 +69,7 @@ class KameraController extends GetxController {
       Placemark place = placemarks[0];
       address.value =
           '${place.street}, ${place.subLocality}, ${place.locality}, ${place.subAdministrativeArea}';
-      print("${address.value} memek");
+      print("${address.value}");
       location.value = address.value;
     } catch (e) {
       print(e);
