@@ -1,3 +1,4 @@
+import 'package:bismillahcapston/app/data/auth/user/user_response.dart';
 import 'package:bismillahcapston/app/data/authproses.dart';
 import 'package:flutter/material.dart';
 
@@ -32,20 +33,24 @@ class ProfilView extends GetView<ProfilController> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    "Bang Kepins",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: primaryColor,
-                        fontSize: 18),
-                  ),
+                  Obx(() {
+                    return Text(
+                      controller.username.value,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: primaryColor,
+                          fontSize: 18),
+                    );
+                  }),
                   SizedBox(
                     height: 6,
                   ),
-                  Text(
-                    "KeVinskuy@gmail.com",
-                    style: TextStyle(fontSize: 15, color: primaryColor),
-                  ),
+                  Obx(() {
+                    return Text(
+                      controller.email.value,
+                      style: TextStyle(fontSize: 15, color: primaryColor),
+                    );
+                  })
                 ]),
               ),
               Container(
@@ -65,20 +70,23 @@ class ProfilView extends GetView<ProfilController> {
                     SizedBox(
                       height: 10,
                     ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(20),
-                        fillColor: secondaryColor,
-                        focusColor: secondaryColor,
-                        hintText: "Masukan Nama lengkap anda",
-                        labelText: "Bang Kepins",
-                        suffixIcon: const Padding(
-                            padding: EdgeInsets.all(15.0),
-                            child: Icon(Icons.title)),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0)),
-                      ),
-                    ),
+                    Obx(() {
+                      return TextFormField(
+                        controller: controller.name,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(20),
+                          fillColor: secondaryColor,
+                          focusColor: secondaryColor,
+                          hintText: "Masukan Nama lengkap anda",
+                          labelText: controller.username.value,
+                          suffixIcon: const Padding(
+                              padding: EdgeInsets.all(15.0),
+                              child: Icon(Icons.title)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0)),
+                        ),
+                      );
+                    }),
                     SizedBox(
                       height: 15,
                     ),
@@ -89,40 +97,43 @@ class ProfilView extends GetView<ProfilController> {
                       ),
                     ),
                     const SizedBox(width: 20, height: 20),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(20),
-                        hintText: "Masukan Email anda",
-                        labelText: "keVinskuy@gmail.com",
-                        suffixIcon: const Padding(
-                            padding: EdgeInsets.all(15.0),
-                            child: Icon(Icons.email_outlined)),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0)),
-                      ),
-                    ),
+                    Obx(() {
+                      return TextFormField(
+                        controller: controller.email1,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(20),
+                          hintText: "Masukan Email anda",
+                          labelText: controller.email.value,
+                          suffixIcon: const Padding(
+                              padding: EdgeInsets.all(15.0),
+                              child: Icon(Icons.email_outlined)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0)),
+                        ),
+                      );
+                    }),
                     SizedBox(
                       height: 15,
                     ),
-                    Text(
-                      "Pasword",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    // Text(
+                    //   "Pasword",
+                    //   style: TextStyle(
+                    //     fontWeight: FontWeight.bold,
+                    //   ),
+                    // ),
                     const SizedBox(width: 20, height: 20),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(20),
-                        hintText: "12345678",
-                        labelText: "Password",
-                        suffixIcon: const Padding(
-                            padding: EdgeInsets.all(15.0),
-                            child: Icon(Icons.password_outlined)),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0)),
-                      ),
-                    ),
+                    // TextFormField(
+                    //   decoration: InputDecoration(
+                    //     contentPadding: EdgeInsets.all(20),
+                    //     hintText: "12345678",
+                    //     labelText: "Password",
+                    //     suffixIcon: const Padding(
+                    //         padding: EdgeInsets.all(15.0),
+                    //         child: Icon(Icons.password_outlined)),
+                    //     border: OutlineInputBorder(
+                    //         borderRadius: BorderRadius.circular(15.0)),
+                    //   ),
+                    // ),
                     const SizedBox(height: 20),
                     Row(
                       children: [
@@ -137,7 +148,11 @@ class ProfilView extends GetView<ProfilController> {
                               "Simpan",
                               style: TextStyle(color: Colors.white),
                             ),
-                            onPressed: () => Get.toNamed(Routes.LOGIN)),
+                            onPressed: () {
+                              controller.updateUser(UserChange(
+                                  email: controller.email1.text.toString(),
+                                  name: controller.name.text.toString()));
+                            }),
                         SizedBox(
                           width: 20,
                         ),

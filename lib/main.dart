@@ -1,3 +1,4 @@
+import 'package:bismillahcapston/app/data/authProses.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:get/get.dart';
@@ -12,10 +13,13 @@ Future<void> main() async {
     print('Error: $e.code\nError Message: $e.message');
   }
 
+  final isLogin = await AuthProses.isLogin();
+  print("$isLogin kkkk");
+
   runApp(
     GetMaterialApp(
       title: "Application",
-      initialRoute: Routes.WELCOME,
+      initialRoute: isLogin ? Routes.DASHBOARD : Routes.WELCOME,
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
     ),

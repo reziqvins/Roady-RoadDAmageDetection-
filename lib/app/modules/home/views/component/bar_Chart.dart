@@ -11,8 +11,8 @@ class BarGraph extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BarData myBarData = BarData(
-      RusakRingan: graph_data[0],
-      RusakBerat: graph_data[1],
+      Retak: graph_data[0],
+      Berlubang: graph_data[1],
     );
     myBarData.initializedBarData();
     return Container(
@@ -57,7 +57,8 @@ class BarGraph extends StatelessWidget {
                       .map((data) => BarChartGroupData(x: data.x, barRods: [
                             BarChartRodData(
                                 toY: data.y,
-                                color: secondaryColor,
+                                color: Colors.teal
+                                ,
                                 width: 100,
                                 borderRadius: BorderRadius.circular(6),
                                 backDrawRodData: BackgroundBarChartRodData(
@@ -76,10 +77,10 @@ Widget getBottomGraphBarValue(double y, TitleMeta tittle) {
   Widget text;
   switch (y.toInt()) {
     case 1:
-      text = const Text("Rusak Berat");
+      text = const Text("Berlubang");
       break;
     case 2:
-      text = const Text("Rusak Ringan");
+      text = const Text("Retak");
       break;
 
     default:

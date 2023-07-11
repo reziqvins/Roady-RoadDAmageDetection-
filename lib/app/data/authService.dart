@@ -1,8 +1,11 @@
 import 'dart:convert';
 import 'package:bismillahcapston/app/data/auth/addData/addDataRequest.dart';
 import 'package:bismillahcapston/app/data/auth/addData/addDataResponse.dart';
+import 'package:bismillahcapston/app/data/auth/constant.dart';
 import 'package:bismillahcapston/app/data/auth/forgot_Pasword/forgotPass_request.dart';
 import 'package:bismillahcapston/app/data/auth/forgot_Pasword/forgotPass_response.dart';
+import 'package:bismillahcapston/app/data/auth/user/user_response.dart';
+import 'package:bismillahcapston/app/data/authProses.dart';
 import 'package:http/http.dart' as http;
 
 import 'auth/signin/signin_request.dart';
@@ -10,8 +13,9 @@ import 'auth/signin/signin_response.dart';
 import 'auth/signup/signup_request.dart';
 import 'auth/signup/signup_response.dart';
 
-// final baseUrl = "https://web-service-production-0f42.up.railway.app/";
-const baseUrl = "https://web-service-production-498a.up.railway.app/";
+final baseUrl = "http://kuro.asrofur.me:6969";
+
+// const baseUrl = "https://web-service-production-498a.up.railway.app";
 
 class authService {
   static Future<SignUpResponse> doRegister(SignUpRequest signupRequest) async {
@@ -66,31 +70,32 @@ class authService {
     }
   }
 
-  // Future<UserResponse> currentUser() async {
-  //   final token = await authRepository.getToken();
-  //   print(token);
-  //   final response = await http.get(Uri.parse("$baseUrl/bearer-auth"),
-  //       headers: headers(token));
-  //   if (response.statusCode == 200) {
-  //     return UserResponse.fromMap(json.decode(response.body));
-  //   }else{
-  //     final err = UserResponse.fromMap(json.decode(response.body));
-  //     throw Exception("${err.message}");
-  //   }
-  // }
+  static Future<UserResponse> currentUser() async {
+    final token = await AuthProses.getToken();
+    print("$token hahahaha");
+    final response = await http.get(Uri.parse("$baseUrl/user/current"),
+        headers: headers(token));
+    print(
+        "${UserResponse.fromMap(json.decode(response.body))} hehehehehehehehehehehehehehe he");
+    if (response.statusCode == 200) {
+      print("${UserResponse.fromMap(json.decode(response.body))} he");
+      return UserResponse.fromMap(json.decode(response.body));
+    } else {
+      final err = UserResponse.fromMap(json.decode(response.body));
+      throw Exception(" $err hhhh");
+    }
+  }
 
-  //  Future<ChangeUserResponse> changeUser(ChangeUser changeUser) async {
-  //   final token = await authRepository.getToken();
-  //   print(token);
-  //   final response = await http.put(Uri.parse("$baseUrl/change-user"),
-  //       headers: headers(token),
-  //       body: changeUser.toJson()
-  //       );
-  //   if (response.statusCode == 200) {
-  //     return ChangeUserResponse.fromMap(json.decode(response.body));
-  //   } else {
-  //     final err = ChangeUserResponse.fromMap(json.decode(response.body));
-  //     throw Exception("${err.message}");
-  //   }
-  // }
+  static Future<ChangeUserResponse> changeUser(UserChange changeUser) async {
+    final token = await AuthProses.getToken();
+    print(token);
+    final response = await http.put(Uri.parse("$baseUrl/user/update"),
+        headers: headers(token), body: changeUser.toJson());
+    if (response.statusCode == 200) {
+      return ChangeUserResponse.fromMap(json.decode(response.body));
+    } else {
+      final err = ChangeUserResponse.fromMap(json.decode(response.body));
+      throw Exception("${err.message}");
+    }
+  }
 }

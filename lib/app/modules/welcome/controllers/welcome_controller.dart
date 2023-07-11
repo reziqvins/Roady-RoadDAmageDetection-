@@ -72,7 +72,7 @@ class WelcomeController extends GetxController {
         AuthProses.setLogin();
         print("${value.token}");
         AuthProses.setToken(value.token.toString());
-        print("${AuthProses.getToken()}");
+        print("${AuthProses.getToken()} ${AuthProses.isLogin()} hehe");
         Get.showSnackbar(GetSnackBar(
             message: value.token,
             title: "Success",
@@ -92,6 +92,33 @@ class WelcomeController extends GetxController {
       isLoadingLogin(false);
     });
   }
+
+  // Future oneTimeIsIt() async {
+  //   final sharedPreferences = await SharedPreferences.getInstance();
+  //   var key = sharedPreferences.getBool("keys");
+  //   print("key is $key");
+  //   if (key != null) {
+  //     if (key) {
+  //       final isLogin = await authRepository.isLogin();
+  //       print("$isLogin hehe");
+  //       if (isLogin) {
+  //         Get.put(DashboardController());
+  //         Get.offAll(() => const DashboardView(),
+  //             transition: Transition.upToDown,
+  //             duration: const Duration(milliseconds: 600));
+  //       }else{
+  //          Get.offAll(() => const LoginView(),
+  //             transition: Transition.upToDown,
+  //             duration: const Duration(milliseconds: 600));
+  //       }
+       
+  //     }
+  //   } else {
+  //     Get.offAll(() => const OnboardingView(),
+  //         transition: Transition.upToDown,
+  //         duration: const Duration(milliseconds: 600));
+  //   }
+  // }
 
   @override
   void dispose() {

@@ -6,12 +6,12 @@ class IndividualBar {
 }
 
 class BarData {
-  final double RusakRingan;
-  final double RusakBerat;
+  final double Retak;
+  final double Berlubang;
 
   BarData({
-    required this.RusakRingan,
-    required this.RusakBerat,
+    required this.Retak,
+    required this.Berlubang,
   });
 
   List<IndividualBar> graph_datas = [];
@@ -19,12 +19,12 @@ class BarData {
 
   void initializedBarData() {
     graph_datas = [
-      IndividualBar(x: 1, y: RusakRingan),
-      IndividualBar(x: 2, y: RusakBerat),
+      IndividualBar(x: 1, y: Retak),
+      IndividualBar(x: 2, y: Berlubang),
     ];
     graph_datas_mobile = [
-      IndividualBar(x: 1, y: RusakRingan),
-      IndividualBar(x: 2, y: RusakBerat),
+      IndividualBar(x: 1, y: Retak),
+      IndividualBar(x: 2, y: Berlubang),
     ];
   }
 }

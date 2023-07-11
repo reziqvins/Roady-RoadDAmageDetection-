@@ -1,6 +1,7 @@
 import 'package:bismillahcapston/app/modules/kamera/controllers/kamera_controller.dart';
 import 'package:bismillahcapston/app/modules/theme/colors.dart';
 import 'package:camera/camera.dart';
+import 'package:device_apps/device_apps.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -229,13 +230,15 @@ class _CameraScreenState extends State<CameraScreen> {
                                                 style: TextStyle(
                                                     color: Colors.white),
                                               ),
-                                              onPressed: () {
-                                                add.addData(
-                                                    "Rusak Ringan",
-                                                    "671.453",
-                                                    "-6.74353",
-                                                    "https://res.cloudinary.com/dap6ohre8/image/upload/v1683613287/roady/download_bcsmyl.jpg",
-                                                    "2023-05-18 18:30:33");
+                                              onPressed: ()async{
+                                                DeviceApps.openApp('org.tensorflow.lite.examples.objectdetection');
+                                                // add.addData(
+                                                //   "Rusak Ringan",
+                                                //   "671.453",
+                                                //   "-6.74353",
+                                                //   "2023-05-26 19:45:09",
+                                                //   "https://res.cloudinary.com/dap6ohre8/image/upload/v1683613287/roady/download_bcsmyl.jpg",
+                                                // );
                                               },
                                             ),
                                           ),

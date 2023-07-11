@@ -1,6 +1,7 @@
 import 'package:bismillahcapston/app/data/dataResponse.dart';
 import 'package:bismillahcapston/app/model/Chart_Data.dart';
 import 'package:bismillahcapston/app/modules/home/views/component/bar_Chart.dart';
+import 'package:bismillahcapston/app/modules/home/views/component/visualisasi.dart';
 import 'package:bismillahcapston/app/routes/app_pages.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -85,7 +86,13 @@ class HomeView extends GetView<HomeController> {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                  BarGraph(graph_data: graph_datas),
+                  Obx(() {
+                    if (controller.jalan2.isNotEmpty) {
+                      return BarGraph(graph_data: controller.jalan2);
+                    } else {
+                      return BarGraph(graph_data: graph_datas);
+                    }
+                  }),
                   Padding(
                     padding: EdgeInsets.only(top: 5, bottom: 10),
                     child: Text(
@@ -117,20 +124,22 @@ class HomeView extends GetView<HomeController> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Rusak Berat',
+                                    'Berlubang',
                                     style: TextStyle(
                                         fontSize: 13,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(top: 12.0),
-                                    child: Text("10",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold)),
-                                  ),
+                                      padding: EdgeInsets.only(top: 12.0),
+                                      child: Obx(
+                                        () => Text(
+                                            "${controller.countBerlubang}",
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold)),
+                                      )),
                                 ],
                               ),
                             ),
@@ -158,20 +167,21 @@ class HomeView extends GetView<HomeController> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Rusak Ringan',
+                                    'Retak',
                                     style: TextStyle(
                                         fontSize: 13,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(top: 12.0),
-                                    child: Text("20",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold)),
-                                  ),
+                                      padding: EdgeInsets.only(top: 12.0),
+                                      child: Obx(
+                                        () => Text("${controller.countRetak}",
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold)),
+                                      )),
                                 ],
                               ),
                             ),
