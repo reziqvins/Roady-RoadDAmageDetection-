@@ -14,7 +14,7 @@ import 'auth/signup/signup_request.dart';
 import 'auth/signup/signup_response.dart';
 
 final baseUrl = "http://kuro.asrofur.me:6969";
-
+// final baseUrl = "https://broady-production.up.railway.app";
 // const baseUrl = "https://web-service-production-498a.up.railway.app";
 
 class authService {

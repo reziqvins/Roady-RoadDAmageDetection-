@@ -262,7 +262,7 @@ class Card_Kondisi extends StatelessWidget {
                   Container(
                     alignment: Alignment.center,
                     child: Text(
-                      jalan.createAt,
+                      jalan.created_At,
                       style: TextStyle(fontSize: 12),
                     ),
                   ),
@@ -276,7 +276,7 @@ class Card_Kondisi extends StatelessWidget {
                   SizedBox(
                     height: 4,
                   ),
-                  Text("${jalan.latitude} ${jalan.longitude}"),
+                  Text("${jalan.lokasi}"),
                 ],
               ),
             ),

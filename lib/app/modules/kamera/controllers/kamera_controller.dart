@@ -81,36 +81,31 @@ class KameraController extends GetxController {
   final AuthService = authService();
 
   void addData(String tingkat_kerusakan, String longitude, String latitude,
-      String create_At, String img) {
-    isLoadingLogin.value = true;
-    Timer(const Duration(seconds: 3), () {
-      AuthService.addData(addDataRequest(
-              tingkat_kerusakan: tingkat_kerusakan,
-              longitude: longitude,
-              latitude: latitude,
-              create_At: create_At,
-              img: img))
-          .then((value) {
-        print("${value.message}");
-        AuthProses.setToken(value.message.toString());
-        print("${AuthProses.getToken()}");
-        Get.showSnackbar(GetSnackBar(
-            message: value.message,
-            title: "Success",
-            padding: EdgeInsets.all(16),
-            margin: EdgeInsets.all(16 / 2),
-            duration: const Duration(milliseconds: 2000)));
-        Get.offAllNamed(Routes.DASHBOARD);
-      }).catchError((value) {
-        Get.showSnackbar(GetSnackBar(
-            message: "$value",
-            title: "Error",
-            padding: EdgeInsets.all(16),
-            margin: const EdgeInsets.all(16 / 2),
-            duration: const Duration(milliseconds: 2000)));
-      });
+      String created_At, String img) {
+    // isLoadingLogin.value = true;
+    // Timer(const Duration(seconds: 3), () {
 
-      isLoadingLogin(false);
-    });
+    //       .then((value) {
+    //     print("${value.message}");
+    //     AuthProses.setToken(value.message.toString());
+    //     print("${AuthProses.getToken()}");
+    //     Get.showSnackbar(GetSnackBar(
+    //         message: value.message,
+    //         title: "Success",
+    //         padding: EdgeInsets.all(16),
+    //         margin: EdgeInsets.all(16 / 2),
+    //         duration: const Duration(milliseconds: 2000)));
+    //     Get.offAllNamed(Routes.DASHBOARD);
+    //   }).catchError((value) {
+    //     Get.showSnackbar(GetSnackBar(
+    //         message: "$value",
+    //         title: "Error",
+    //         padding: EdgeInsets.all(16),
+    //         margin: const EdgeInsets.all(16 / 2),
+    //         duration: const Duration(milliseconds: 2000)));
+    //   });
+
+    //   isLoadingLogin(false);
+    // });
   }
 }

@@ -3,28 +3,25 @@ import 'dart:ffi';
 import 'package:http/http.dart' as http;
 
 class Jalan {
-  String createAt;
+  String created_At;
   String id;
   String img;
-  double latitude;
-  double longitude;
+  String lokasi;
   String tingkat_kerusakan;
 
   Jalan(
-      {required this.createAt,
+      {required this.created_At,
       required this.id,
       required this.img,
-      required this.latitude,
-      required this.longitude,
+      required this.lokasi,
       required this.tingkat_kerusakan});
 
   factory Jalan.fromMap(Map<String, dynamic> json) {
     return Jalan(
-      createAt: json["create_at"],
+      created_At: json["created_At"],
       id: json["id"],
       img: json["img"],
-      latitude: json["latitude"],
-      longitude: json["longitude"],
+      lokasi: json["lokasi"],
       tingkat_kerusakan: json["tingkat_kerusakan"],
     );
   }
